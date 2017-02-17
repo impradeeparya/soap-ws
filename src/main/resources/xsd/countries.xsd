@@ -1,5 +1,5 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="com/soap/ws"
-           targetNamespace="com/soap/ws" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/soap/ws"
+           targetNamespace="http://spring.io/soap/ws" elementFormDefault="qualified">
 
     <xs:element name="getCountryRequest">
         <xs:complexType>
@@ -28,6 +28,8 @@
 
     <xs:simpleType name="currency">
         <xs:restriction base="xs:string">
+            <xs:enumeration value="RUPEE"/>
+            <xs:enumeration value="RINGGIT"/>
             <xs:enumeration value="GBP"/>
             <xs:enumeration value="EUR"/>
             <xs:enumeration value="PLN"/>

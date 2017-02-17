@@ -27,3 +27,6 @@ nbdist/
 .mvn/
 mvnw
 mvnw.cmd
+
+###JAXB
+src/main/java/META-INF
