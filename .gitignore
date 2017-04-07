@@ -10,3 +10,6 @@ spring-boot/mvnw.cmd
 spring-boot/mvnw
 spring-boot/.mvn
 spring-boot/*.iml
+
+annotation-based/target
+annotation-based/*.iml
