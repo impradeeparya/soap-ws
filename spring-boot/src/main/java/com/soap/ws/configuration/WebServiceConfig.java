@@ -41,7 +41,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     * Expose standard ws to client
     * */
     @Bean(name = "countries")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
+    public DefaultWsdl11Definition defaultCountryWsdl11Definition(XsdSchema countriesSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("CountriesPort");
         wsdl11Definition.setLocationUri("/ws");
@@ -53,5 +53,20 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     @Bean
     public XsdSchema countriesSchema() {
         return new SimpleXsdSchema(new ClassPathResource("xsd/countries.xsd"));
+    }
+
+    @Bean(name = "members")
+    public DefaultWsdl11Definition defaultMemberWsdl11Definition(XsdSchema membersSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("MembersPort");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace("http://soap.com/ws/xjc");
+        wsdl11Definition.setSchema(membersSchema);
+        return wsdl11Definition;
+    }
+
+    @Bean
+    public XsdSchema membersSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/members.xsd"));
     }
 }
