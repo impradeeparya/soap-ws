@@ -28,14 +28,14 @@
                   value="com.soap.ws.xjc"/>
     </bean>
 
-    <bean id="payloadMapping"
-          class="org.springframework.ws.server.endpoint.mapping.PayloadRootQNameEndpointMapping">
-        <property name="endpointMap">
-            <map>
-                <entry key="{http://soap.com/ws/xjc/}getCountryRequest"
-                       value-ref="countryEndPoint"/>
-            </map>
-        </property>
+    <bean class="org.springframework.ws.server.endpoint.mapping.PayloadRootAnnotationMethodEndpointMapping">
+        <description>An endpoint mapping strategy that looks for @Endpoint and @PayloadRoot annotations.</description>
     </bean>
+
+    <bean class="org.springframework.ws.server.endpoint.adapter.MarshallingMethodEndpointAdapter">
+        <description>Enables the MessageDispatchServlet to invoke methods requiring OXM marshalling.</description>
+        <constructor-arg ref="marshaller"/>
+    </bean>
+
 
 </beans>
