@@ -4,7 +4,6 @@ import com.soap.ws.repository.CountryRepository;
 import com.soap.ws.xjc.GetCountryRequest;
 import com.soap.ws.xjc.GetCountryResponse;
 import org.springframework.ws.server.endpoint.AbstractMarshallingPayloadEndpoint;
-import org.springframework.ws.server.endpoint.annotation.Endpoint;
 
 /**
  * Created by pradeep on 7/4/17.

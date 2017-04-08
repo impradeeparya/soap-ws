@@ -2,9 +2,7 @@ package com.soap.ws.repository;
 
 import com.soap.ws.xjc.Country;
 import com.soap.ws.xjc.Currency;
-import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 

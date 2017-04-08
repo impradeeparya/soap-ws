@@ -16,10 +16,25 @@
         </property>
     </bean>
 
+    <bean id="members" class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition"
+          p:portTypeName="MemberPort"
+          p:locationUri="http://localhost:8080/soap-ws/ws"
+          p:targetNamespace="http://soap.com/ws/xjc">
+        <property name="schema">
+            <bean class="org.springframework.xml.xsd.SimpleXsdSchema"
+                  p:xsd="classpath:xsd/members.xsd"/>
+        </property>
+    </bean>
+
     <bean id="countryRepository" class="com.soap.ws.repository.CountryRepository" init-method="initData"></bean>
 
     <bean id="countryEndPoint" class="com.soap.ws.endpoint.CountryEndpoint">
         <property name="countryRepository" ref="countryRepository"/>
+        <property name="marshaller" ref="marshaller"/>
+        <property name="unmarshaller" ref="marshaller"/>
+    </bean>
+
+    <bean id="memberEndpoint" class="com.soap.ws.endpoint.MemberEndpoint">
         <property name="marshaller" ref="marshaller"/>
         <property name="unmarshaller" ref="marshaller"/>
     </bean>
@@ -45,6 +60,8 @@
             <map>
                 <entry key="{http://soap.com/ws/xjc}getCountryRequest"
                        value-ref="countryEndPoint"/>
+                <entry key="{http://soap.com/ws/xjc}getMemberDetailsRequest"
+                       value-ref="memberEndpoint"/>
             </map>
         </property>
     </bean>

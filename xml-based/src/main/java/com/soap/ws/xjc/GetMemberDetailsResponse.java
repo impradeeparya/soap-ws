@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="country" type="{http://soap.com/ws/xjc}country"/&gt;
+ *         &lt;element name="memberdetail" type="{http://soap.com/ws/xjc}MemberDetailType"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "country"
+    "memberdetail"
 })
-@XmlRootElement(name = "getCountryResponse")
-public class GetCountryResponse {
+@XmlRootElement(name = "getMemberDetailsResponse")
+public class GetMemberDetailsResponse {
 
     @XmlElement(required = true)
-    protected Country country;
+    protected MemberDetailType memberdetail;
 
     /**
-     * Gets the value of the country property.
+     * Gets the value of the memberdetail property.
      * 
      * @return
      *     possible object is
-     *     {@link Country }
+     *     {@link MemberDetailType }
      *     
      */
-    public Country getCountry() {
-        return country;
+    public MemberDetailType getMemberdetail() {
+        return memberdetail;
     }
 
     /**
-     * Sets the value of the country property.
+     * Sets the value of the memberdetail property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Country }
+     *     {@link MemberDetailType }
      *     
      */
-    public void setCountry(Country value) {
-        this.country = value;
+    public void setMemberdetail(MemberDetailType value) {
+        this.memberdetail = value;
     }
 
 }
