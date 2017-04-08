@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="countries" class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition"
+          p:portTypeName="CountriesPort"
+          p:locationUri="http://localhost:8080/soap-ws/ws"
+          p:targetNamespace="http://soap.com/ws/xjc">
+        <property name="schema">
+            <bean class="org.springframework.xml.xsd.SimpleXsdSchema"
+                  p:xsd="classpath:xsd/countries.xsd"/>
+        </property>
+    </bean>
+
+    <bean id="countryRepository" class="com.soap.ws.repository.CountryRepository" init-method="initData"></bean>
+
+    <bean id="countryEndPoint" class="com.soap.ws.endpoint.CountryEndpoint">
+        <property name="countryRepository" ref="countryRepository"/>
+    </bean>
+
+
+    <bean id="marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="contextPath"
+                  value="com.soap.ws.xjc"/>
+    </bean>
+
+    <bean id="payloadMapping"
+          class="org.springframework.ws.server.endpoint.mapping.PayloadRootQNameEndpointMapping">
+        <property name="endpointMap">
+            <map>
+                <entry key="{http://soap.com/ws/xjc/}getCountryRequest"
+                       value-ref="countryEndPoint"/>
+            </map>
+        </property>
+    </bean>
+
+</beans>
